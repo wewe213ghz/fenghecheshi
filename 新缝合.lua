@@ -206,3 +206,126 @@ Tabs.ParagraphTab:Paragraph({
             Callback = function() print("1 Button") end,
             Icon = "bird",
         },
+        {
+            Title = "Button 2",
+            Variant = "Primary",
+            Callback = function() print("2 Button") end,
+            Icon = "bird",
+        },
+        {
+            Title = "Button 3",
+            Variant = "Primary",
+            Callback = function() print("3 Button") end,
+            Icon = "bird",
+        },
+    }
+})
+
+Tabs.ParagraphTab:Divider()
+
+for _,i in next, { "Default", "Red", "Orange", "Green", "Blue", "Grey", "White" } do
+    Tabs.ParagraphTab:Paragraph({
+        Title = i,
+        Desc = "Paragraph with color",
+        Image = "bird",
+        Color = i ~= "Default" and i or nil,
+        Buttons = {
+            {
+                Title = "Button 1",
+                Variant = "Primary",
+                Callback = function() print("1 Button") end,
+                Icon = "bird",
+            },
+            {
+                Title = "Button 2",
+                Variant = "Primary",
+                Callback = function() print("2 Button") end,
+                Icon = "bird",
+            },
+            {
+                Title = "Button 3",
+                Variant = "Primary",
+                Callback = function() print("3 Button") end,
+                Icon = "bird",
+            },
+        }
+    })
+end
+
+
+
+Tabs.ButtonTab:Button({
+    Title = "Click Me",
+    Desc = "This is a simple button",
+    Callback = function() print("Button Clicked!") end
+})
+
+
+local destroybtn
+destroybtn = Tabs.ButtonTab:Button({
+    Title = "Click to destroy me!",
+    Callback = function() destroybtn:Destroy() end,
+})
+
+Tabs.ButtonTab:Button({
+    Title = "Submit",
+    Desc = "Click to submit",
+    Callback = function() print("Submitted!") end,
+})
+
+Tabs.ButtonTab:Button({
+    Title = "Set ToggleKey to 'F'",
+    Callback = function() Window:SetToggleKey(Enum.KeyCode.F) end,
+})
+
+Tabs.ButtonTab:Divider()
+
+
+Tabs.ButtonTab:Button({
+    Title = "Locked Button",
+    Desc = "This button is locked",
+    Locked = true,
+})
+
+
+Tabs.CodeTab:Code({
+    Title = "example-code.luau",
+    Code = [[-- Example Luau code to test syntax highlighting
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+
+local function factorial(n)
+    if n <= 1 then
+        return 1
+    else
+        return n * factorial(n - 1)
+    end
+end
+
+local result = factorial(5)
+print("Factorial of 5 is:", result)
+
+local playerName = "Player"
+local score = 100
+
+if score >= 100 then
+    print(playerName .. " earned an achievement!")
+else
+    warn("Need more points.")
+end
+
+-- Table with nested values
+local playerStats = {
+    name = "Player",
+    health = 100,
+    inventory = {"sword", "shield", "potion"}
+}
+
+for i, item in ipairs(playerStats.inventory) do
+    print("Item in inventory:", item)
+end]],
+})
+
+Tabs.CodeTab:Code({
+    Code = [[print("WindUI on top!")]],
+})
