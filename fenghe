@@ -55,7 +55,7 @@ repeat wait() until Confirmed
 --
 
 local Window = WindUI:CreateWindow({
-    Title = "WindUI Library",
+    Title = "缝合 Library",
     Icon = "rbxassetid://129260712070622",
     IconThemed = true,
     Author = "Example UI",
