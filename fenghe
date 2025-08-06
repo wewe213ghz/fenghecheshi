@@ -5,9 +5,9 @@ local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/rel
 
 
 -- Set theme:
---缝合脚本:SetTheme("Rose")
+--WindUI:SetTheme("Light")
 
---- 第一次做
+--- EXAMPLE !!!
 
 function gradient(text, startColor, endColor)
     local result = ""
@@ -32,7 +32,7 @@ WindUI:Popup({
     Title = "Welcome! Popup Example",
     Icon = "rbxassetid://129260712070622",
     IconThemed = true,
-    Content = "This is an Example UI for the " .. gradient("WindUI", Color3.fromHex("#f59e0b"), Color3.fromHex("#bbf7d0")) .. " Lib",
+    Content = "This is an Example UI for the " .. gradient("WindUI", Color3.fromHex("#00FF87"), Color3.fromHex("#60EFFF")) .. " Lib",
     Buttons = {
         {
             Title = "Cancel",
@@ -58,7 +58,7 @@ local Window = WindUI:CreateWindow({
     Title = "缝合脚本",
     Icon = "rbxassetid://129260712070622",
     IconThemed = true,
-    Author = "Example UI",
+    Author = "第一回做",
     Folder = "CloudHub",
     Size = UDim2.fromOffset(580, 460),
     Transparent = true,
@@ -85,113 +85,77 @@ local Window = WindUI:CreateWindow({
         SaveKey = true, -- saves key : optional
     },
 })
-local Tab = Window:MakeTab({
-	Name = "通用1",
-	Icon = "rbxassetid://7734068321",
-	PremiumOnly = false
+
+
+-- Window:SetBackgroundImage("rbxassetid://13511292247")
+-- Window:SetBackgroundImageTransparency(0.9)
+
+
+-- TopBar Edit
+
+-- Disable Topbar Buttons
+-- Window:DisableTopbarButtons({
+--     "Close", 
+--     "Minimize", 
+--     "Fullscreen",
+-- })
+
+-- Create Custom Topbar Buttons
+--                        ↓ Name             ↓ Icon          ↓ Callback                           ↓ LayoutOrder
+Window:CreateTopbarButton("MyCustomButton1", "bird",         function() print("clicked 1!") end,  990)
+Window:CreateTopbarButton("MyCustomButton2", "droplet-off",  function() print("clicked 2!") end,  989)
+Window:CreateTopbarButton("MyCustomButton3", "battery-plus", function() Window:ToggleFullscreen() end, 988)
+
+
+Window:EditOpenButton({
+    Title = "Open Example UI",
+    Icon = "monitor",
+    CornerRadius = UDim.new(0,16),
+    StrokeThickness = 2,
+    Color = ColorSequence.new( -- gradient
+        Color3.fromHex("FF0F7B"), 
+        Color3.fromHex("F89B29")
+    ),
+    --Enabled = false,
+    Draggable = true,
 })
 
-Tab:AddToggle({
-	Name = "夜视",
-	Default = false,
-	Callback = function(Value)
 
-		if Value then
-		    game.Lighting.Ambient = Color3.new(1, 1, 1)
-		else
-		    game.Lighting.Ambient = Color3.new(0, 0, 0)
-		end
-	end
-})
+local Tabs = {}
 
-Tab:AddToggle({
-  Name = "秒杀有血量的NPC",
-  Default = false,
-  Callback = function(Value)
-  if Value then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/WSbuq/-/main/killNPC"))()
-    else
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/WSbuq/-/main/killNPC1"))()
-  end
-end
-})
+do
+    Tabs.ElementsSection = Window:Section({
+        Title = "Elements",
+        Opened = true,
+    })
+    
+    Tabs.WindowSection = Window:Section({
+        Title = "Window Management",
+        Icon = "app-window-mac",
+        Opened = true,
+    })
+    
+    Tabs.OtherSection = Window:Section({
+        Title = "Other",
+        Opened = true,
+    })
 
-Tab:AddButton({
-  Name = "穿墙(可关闭)",
-  Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TtmScripter/OtherScript/main/Noclip"))()
-  end
-})
-
-Tab:AddButton({
-  Name = "阿尔宙斯注入器",
-  Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/Arceus%20X%20V3"))()
-  end
-})
-
-Tab:AddButton({
-  Name = "子弹追踪(视角会变得奇怪)",
-  Callback = function()
-local Camera = game:GetService("Workspace").CurrentCamera
-local Players = game:GetService("Players")
-local LocalPlayer = game:GetService("Players").LocalPlayer
-
-local function GetClosestPlayer()
-   local ClosestPlayer = nil
-   local FarthestDistance = math.huge
-
-   for i, v in pairs(Players.GetPlayers(Players)) do
-       if v ~= LocalPlayer and v.Character and v.Character.FindFirstChild(v.Character, "HumanoidRootPart") then
-           local DistanceFromPlayer = (LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
-
-           if DistanceFromPlayer < FarthestDistance then
-               FarthestDistance = DistanceFromPlayer
-               ClosestPlayer = v
-           end
-       end
-   end
-
-   if ClosestPlayer then
-       return ClosestPlayer
-   end
-end
-
-local GameMetaTable = getrawmetatable(game)
-local OldGameMetaTableNamecall = GameMetaTable.__namecall
-setreadonly(GameMetaTable, false)
-
-GameMetaTable.__namecall = newcclosure(function(object, ...)
-   local NamecallMethod = getnamecallmethod()
-   local Arguments = {...}
-
-   if tostring(NamecallMethod) == "FindPartOnRayWithIgnoreList" then
-       local ClosestPlayer = GetClosestPlayer()
-       
-       if ClosestPlayer and ClosestPlayer.Character then
-           Arguments[1] = Ray.new(Camera.CFrame.Position, (ClosestPlayer.Character.Head.Position - Camera.CFrame.Position).Unit * (Camera.CFrame.Position - ClosestPlayer.Character.Head.Position).Magnitude)
-       end
-   end
-
-   return OldGameMetaTableNamecall(object, unpack(Arguments))
-end)
-
-setreadonly(GameMetaTable, true)
-  end
-})
-
-Tab:AddButton({
-  Name = "吸人(一局只能吸一次)",
-  Callback = function()
-loadstring(game:HttpGet('https://pastebin.com/raw/PVPFXqtH'))()
-  end
-})
-
-Tab:AddButton({
-  Name = "飞行",
-  Callback = function()
-  
-loadstring(game:HttpGet("https://pastebin.com/raw/pMyEyJN6"))()
-  end
-})
-
+    
+    Tabs.ParagraphTab = Tabs.ElementsSection:Tab({ Title = "Paragraph", Icon = "type" })
+    Tabs.ButtonTab = Tabs.ElementsSection:Tab({ Title = "Button", Icon = "mouse-pointer-2", Desc = "Contains interactive buttons for various actions." })
+    Tabs.CodeTab = Tabs.ElementsSection:Tab({ Title = "Code", Icon = "code", Desc = "Displays and manages code snippets." })
+    Tabs.ColorPickerTab = Tabs.ElementsSection:Tab({ Title = "ColorPicker", Icon = "paintbrush", Desc = "Choose and customize colors easily." })
+    Tabs.DialogTab = Tabs.ElementsSection:Tab({ Title = "Dialog", Icon = "message-square", Desc = "Dialog lol" })
+    Tabs.NotificationTab = Tabs.ElementsSection:Tab({ Title = "Notification", Icon = "bell", Desc = "Configure and view notifications." })
+    Tabs.ToggleTab = Tabs.ElementsSection:Tab({ Title = "Toggle", Icon = "toggle-left", Desc = "Switch settings on and off." })
+    Tabs.SliderTab = Tabs.ElementsSection:Tab({ Title = "Slider", Icon = "sliders-horizontal", Desc = "Adjust values smoothly with sliders." })
+    Tabs.InputTab = Tabs.ElementsSection:Tab({ Title = "Input", Icon = "keyboard", Desc = "Accept text and numerical input." })
+    Tabs.KeybindTab = Tabs.ElementsSection:Tab({ Title = "Keybind", Icon = "keyboard-off" })
+    Tabs.DropdownTab = Tabs.ElementsSection:Tab({ Title = "Dropdown", Icon = "chevrons-up-down", Desc = "Select from multiple options." })
+    
+    Tabs.WindowTab = Tabs.WindowSection:Tab({ 
+        Title = "Window and File Configuration", 
+        Icon = "settings", 
+        Desc = "Manage window settings and file configurations.", 
+        ShowTabTitle = true 
+    })
