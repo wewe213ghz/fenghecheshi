@@ -5,7 +5,7 @@ local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/rel
 
 
 -- Set theme:
---WindUI:SetTheme("Light")
+--WindUI:SetTheme("Rose")
 
 --- EXAMPLE !!!
 
@@ -32,7 +32,7 @@ WindUI:Popup({
     Title = "Welcome! Popup Example",
     Icon = "rbxassetid://129260712070622",
     IconThemed = true,
-    Content = "This is an Example UI for the " .. gradient("WindUI", Color3.fromHex("#00FF87"), Color3.fromHex("#60EFFF")) .. " Lib",
+    Content = "This is an Example UI for the " .. gradient("WindUI", Color3.fromHex("#f59e0b"), Color3.fromHex("#bbf7d0")) .. " Lib",
     Buttons = {
         {
             Title = "Cancel",
@@ -55,7 +55,7 @@ repeat wait() until Confirmed
 --
 
 local Window = WindUI:CreateWindow({
-    Title = "缝合 Library",
+    Title = "缝合脚本",
     Icon = "rbxassetid://129260712070622",
     IconThemed = true,
     Author = "Example UI",
