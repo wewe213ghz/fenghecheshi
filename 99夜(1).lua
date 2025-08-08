@@ -3,8 +3,8 @@ local selectedTheme = "Default"
 local Window = Rayfield:CreateWindow({
    Name = "99夜-雨脚本",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "99 Nights In The Forest",
-   LoadingSubtitle = "Script By Iliankytb",
+   LoadingTitle = "欢迎使用雨脚本",
+   LoadingSubtitle = "雨-99夜",
    Theme = selectedTheme, -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
    DisableRayfieldPrompts = false,
