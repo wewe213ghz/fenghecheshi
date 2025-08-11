@@ -1159,3 +1159,28 @@ Tab:AddButton({
 loadstring(game:HttpGet('https://raw.githubusercontent.com/wewe213ghz/yujiaoben/refs/heads/main/%E9%9B%A8%E8%84%9A%E6%9C%AC99%E5%A4%9C666.lua'))()
     end
 })
+
+Tab:AddButton({
+	Name = "二狗子99夜",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gycgchgyfytdttr/shenqin/refs/heads/main/99day.lua"))()
+    end
+})
+local Tab = Window:MakeTab({
+	Name = "墨水游戏（用小号玩）",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "墨水游戏1稳定",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/inkgames.github.io/refs/heads/main/ringta.lua"))()
+    end
+})
+Tab:AddButton({
+	Name = "墨水游戏2（没测试过）",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TexRBLX/Roblox-stuff/refs/heads/main/ink-game/testing.lua"))()
+    end
+})
