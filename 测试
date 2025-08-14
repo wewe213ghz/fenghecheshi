@@ -1,0 +1,15 @@
+local gameLoaders = {
+    -- Ink
+    
+    -- 99 Nights
+    ["79546208627805"] = "https://raw.githubusercontent.com/wewe213ghz/yujiaoben/refs/heads/main/%E9%9B%A8%E8%84%9A%E6%9C%AC99%E5%A4%9C666.lua"
+    ["126509999114328"] = "https://raw.githubusercontent.com/wewe213ghz/yujiaoben/refs/heads/main/%E9%9B%A8%E8%84%9A%E6%9C%AC99%E5%A4%9C666.lua"
+}
+
+local gameId = tostring(game.PlaceId)
+local loaderUrl = gameLoaders[gameId]
+
+if loaderUrl then
+    loadstring(game:HttpGet(loaderUrl))()
+else
+end
